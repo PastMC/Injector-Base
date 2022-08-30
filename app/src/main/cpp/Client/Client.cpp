@@ -103,7 +103,7 @@ void SendFeatuere(int32_t number, bool ftr) {
 
 Response getData(){
 
-    Request request{Mode::ESPMode, true,myfloat};
+    Request request{4, true,myfloat};
     int code = client.send((void*) &request, sizeof(request));
     if(code > 0){
         Response response{};
