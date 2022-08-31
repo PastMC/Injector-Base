@@ -138,7 +138,14 @@ void *CreateServer(void *) {
     return nullptr;
 }
 
+bool (*old_get_BoolExample)(void *instance);
 
+bool get_BoolExample(void *instance) {
+    if (instance != NULL && featureHookToggle) {
+        return true;
+    }
+    return old_get_BoolExample(instance);
+}
 ///////FOR HOOKING AND PATCHING EXAMPLES LOOK THE LGL MOD MENU TEMPLATE
 void *hack_thread(void *) {
     while (true) {
@@ -146,6 +153,8 @@ void *hack_thread(void *) {
 
         pthread_exit(NULL);
        }
+       MSHookFunction((void *) getAbsoluteAddress("libil2cpp.so",0x123456), (void *) get_BoolExample, (void **) &old_get_BoolExample);
+
     }
   return NULL;
 }
