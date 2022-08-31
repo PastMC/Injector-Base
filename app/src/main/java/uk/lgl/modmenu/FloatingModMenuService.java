@@ -113,7 +113,7 @@ public class FloatingModMenuService extends Service {
     ScrollView scrollView;
 	private ESPView overlayView;
     boolean stopChecking;
-    String pkg = "com.dts.freefireth";
+    String pkg = "com.axlebolt.standoff2";
     //initialize methods from the native library
     native void setTitleText(TextView textView);
 
